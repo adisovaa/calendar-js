@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+
+$black: #202020;
+$blackOpaque: rgba(32, 32, 32, 0.3);
+$magenta: #912f56;
+$magentaLight: lighten($magenta, 15%);
+$white: #fffafa;
+
+$fontMain: "Playfair Display", serif;
+$fontSizeLg: 4vw * 0.75;
+$fontSizeMd: 2vw;
+$fontSizeSm: 1.5vw;
+$calBorderRadius: 2vw;
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100vh;
+    background-image: linear-gradient(#ebbba7, #cfc7f8);
+
+	@supports (display: grid) {
+		display: grid;
+		place-items: center;
+	}
+}
+
+.container {
+	width: 100%;
+	max-width: 70%;
+	margin: auto;
+	margin-top: 2.5%;
+
+	@supports (display: grid) {
+		margin-top: auto;
+	}
+
+	.canvas {
+		position: relative;
+		padding-top: 62.5%;
+	}
+}
+
+.calendar {
+	position: absolute;
+	width: 70%;
+	height: 78%;
+	top: 3%;
+	left: 15%;
+
+	&:before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 10%;
+		top: 0%;
+		background: $black;
+		border-radius: $calBorderRadius $calBorderRadius 0 0;
+	}
+
+	.page {
+		position: absolute;
+		width: 100%;
+		height: 90%;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		bottom: 0;
+		background: $white;
+		border-radius: 0 0 $calBorderRadius $calBorderRadius;
+		color: $black;
+	}
+
+	header {
+		width: 100%;
+		padding: 2%;
+		display: flex;
+		justify-content: space-between;
+		font-size: $fontSizeMd;
+
+		.cal-month,
+		.cal-year {
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 0.2rem;
+		}
+	}
+
+	table {
+		width: 100%;
+		height: 100%;
+		border-collapse: collapse;
+		border-top: 1px solid $blackOpaque;
+
+		tr {
+			th,
+			td {
+				height: 100%;
+				border: 1px solid $blackOpaque;
+				display: inline-block;
+				width: calc(100% / 7);
+				font-size: $fontSizeSm;
+				padding: 1%;
+
+				span {
+					width: 100%;
+					height: 100%;
+					display: grid;
+					place-items: center;
+				}
+			}
+
+			.today {
+				color: $white;
+                background-image: linear-gradient(#ebbba7, #cfc7f8);
+			}
+
+			.bottom-left-cell {
+				border-radius: 0 0 0 $calBorderRadius;
+			}
+
+			.bottom-right-cell {
+				border-radius: 0 0 $calBorderRadius;
+			}
+		}
+	}
+}
+
+.date {
+	position: absolute;
+	width: 100%;
+	bottom: 3%;
+	color: $white;
+	opacity: 0.6;
+	text-align: center;
+	font-size: $fontSizeLg;
+}
+
+@media all and (max-width: 400px) {
+	.container {
+		display: none;
+	}
+}

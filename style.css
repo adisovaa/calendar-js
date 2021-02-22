@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+body,
+html {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(#ebbba7, #cfc7f8);
+}
+  @supports (display: grid) {
+    body,
+    html {
+      display: grid;
+      place-items: center; } }
+
+.container {
+  width: 100%;
+  max-width: 70%;
+  margin: auto;
+  margin-top: 2.5%; }
+  @supports (display: grid) {
+    .container {
+      margin-top: auto; } }
+  .container .canvas {
+    position: relative;
+    padding-top: 62.5%; }
+
+.calendar {
+  position: absolute;
+  width: 70%;
+  height: 78%;
+  top: 3%;
+  left: 15%; }
+  .calendar:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 0%;
+    background: gray;
+    border-radius: 2vw 2vw 0 0; }
+  .calendar .page {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    bottom: 0;
+    background: #fffafa;
+    border-radius: 0 0 2vw 2vw;
+    color: gray; }
+  .calendar header {
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2vw; }
+    .calendar header .cal-month,
+    .calendar header .cal-year {
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem; }
+  .calendar table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid rgba(32, 32, 32, 0.3); }
+    .calendar table tr th,
+    .calendar table tr td {
+      height: 100%;
+      border: 1px solid rgba(32, 32, 32, 0.3);
+      display: inline-block;
+      width: calc(100% / 7);
+      font-size: 1.5vw;
+      padding: 1%; }
+      .calendar table tr th span,
+      .calendar table tr td span {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center; }
+    .calendar table tr .today {
+      color: #fffafa;
+      background-image: linear-gradient(#ebbba7, #cfc7f8)   }
+    .calendar table tr .bottom-left-cell {
+      border-radius: 0 0 0 2vw; }
+    .calendar table tr .bottom-right-cell {
+      border-radius: 0 0 2vw; }
+
+.date {
+  position: absolute;
+  width: 100%;
+  bottom: 3%;
+  color: #fffafa;
+  opacity: 0.6;
+  text-align: center;
+  font-size: 3vw; }
+
+@media all and (max-width: 400px) {
+  .container {
+    display: none; } }
